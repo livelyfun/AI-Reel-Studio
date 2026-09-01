@@ -1,0 +1,6 @@
+{
+  "name": "AI Reel Studio",
+  "description": "Fully automated Gemini video creator that turns a single prompt into finished social reels with visuals, voiceover, dynamic captions, and YouTube metadata.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
