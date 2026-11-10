@@ -80,9 +80,8 @@ jobs:
           cp ~/rpmbuild/SRPMS/ai-reel-studio-1.0.0-*.src.rpm output/
 
       - name: Upload RPM Artifacts
-        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb99ba8edd # v4.6.1
+        uses: actions/upload-artifact@v4
         with:
           name: fedora-rpm
           path: output/*.rpm
           if-no-files-found: error
-
