@@ -62,13 +62,13 @@ jobs:
         run: mkdir -p release_assets
 
       - name: Download RPM Artifacts
-        uses: actions/download-artifact@cc203385981b70ca67e1cc392babf9cc229d5806 # v4.1.9
+        uses: actions/download-artifact@v4
         with:
           name: fedora-rpm
           path: release_assets/
 
       - name: Download Flatpak Artifact
-        uses: actions/download-artifact@cc203385981b70ca67e1cc392babf9cc229d5806 # v4.1.9
+        uses: actions/download-artifact@v4
         with:
           name: flatpak-bundle
           path: release_assets/
@@ -88,4 +88,3 @@ jobs:
           draft: false
           prerelease: false
           files: release_assets/*
-
