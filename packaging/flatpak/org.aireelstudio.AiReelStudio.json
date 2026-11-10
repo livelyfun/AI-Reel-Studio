@@ -58,7 +58,7 @@
         {
           "type": "archive",
           "url": "https://downloads.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz",
-          "sha256": "ddfe36cab87bd7beeb155a4261a2a4182d60747f35deafcb4249a60032ae2976"
+          "sha256": "ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e"
         }
       ]
     },
