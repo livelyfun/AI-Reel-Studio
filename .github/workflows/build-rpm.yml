@@ -32,7 +32,8 @@ jobs:
             ninja-build \
             rpm-build \
             rpmlint \
-            git \
+            tar \
+            gzip \
             pkgconf-pkg-config \
             gtk4-devel \
             glib2-devel \
@@ -45,14 +46,13 @@ jobs:
             desktop-file-utils \
             libappstream-glib
 
-      - name: Mark git directory safe
-        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
-
       - name: Generate distribution source archive
         run: |
-          # Use git archive (reliable in Actions containers) instead of meson dist
-          git archive --format=tar.gz --prefix=ai-reel-1.0.0/ \
-            -o ai-reel-1.0.0.tar.gz HEAD
+          # Plain tar works inside job containers where .git is often unavailable
+          tar --exclude='.git' --exclude='build*' --exclude='output' \
+            --exclude='ai-reel-1.0.0.tar.gz' \
+            --transform 's,^\./,ai-reel-1.0.0/,' \
+            -czf ai-reel-1.0.0.tar.gz .
           ls -la ai-reel-1.0.0.tar.gz
 
       - name: Setup RPM build tree
