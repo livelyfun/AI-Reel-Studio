@@ -38,7 +38,7 @@
         {
           "type": "git",
           "url": "https://code.videolan.org/videolan/x264.git",
-          "commit": "baee400fa9ced6f5481a728138fed6e8673e8f97"
+          "commit": "b35605ace3ddf7c1a5d67a2eb553f034aef41d55"
         }
       ]
     },
