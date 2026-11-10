@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="50%" stop-color="#312e81"/>
+      <stop offset="100%" stop-color="#4338ca"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="film" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#fb923c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded rect -->
+  <rect width="512" height="512" rx="110" fill="url(#bg)"/>
+
+  <!-- Reel circle outer border -->
+  <circle cx="256" cy="256" r="160" fill="none" stroke="url(#glow)" stroke-width="20" opacity="0.9"/>
+
+  <!-- Reel holes -->
+  <circle cx="256" cy="150" r="28" fill="#0f1117"/>
+  <circle cx="256" cy="362" r="28" fill="#0f1117"/>
+  <circle cx="150" cy="256" r="28" fill="#0f1117"/>
+  <circle cx="362" cy="256" r="28" fill="#0f1117"/>
+  <circle cx="180" cy="180" r="22" fill="#0f1117"/>
+  <circle cx="332" cy="180" r="22" fill="#0f1117"/>
+  <circle cx="180" cy="332" r="22" fill="#0f1117"/>
+  <circle cx="332" cy="332" r="22" fill="#0f1117"/>
+
+  <!-- Center Hub -->
+  <circle cx="256" cy="256" r="64" fill="url(#film)"/>
+
+  <!-- Play icon triangle in center -->
+  <polygon points="244,228 284,256 244,284" fill="#ffffff"/>
+
+  <!-- Sparkle stars representing AI -->
+  <path d="M 390 100 Q 390 125 415 125 Q 390 125 390 150 Q 390 125 365 125 Q 390 125 390 100 Z" fill="url(#glow)"/>
+  <path d="M 120 370 Q 120 388 138 388 Q 120 388 120 406 Q 120 388 102 388 Q 120 388 120 370 Z" fill="url(#glow)"/>
+</svg>
+

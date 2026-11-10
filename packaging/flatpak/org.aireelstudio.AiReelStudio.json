@@ -1,0 +1,53 @@
+{
+  "app-id": "org.aireelstudio.AiReelStudio",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "46",
+  "sdk": "org.gnome.Sdk",
+  "command": "ai-reel",
+  "finish-args": [
+    "--share=ipc",
+    "--socket=wayland",
+    "--socket=fallback-x11",
+    "--share=network",
+    "--socket=pulseaudio",
+    "--device=dri",
+    "--filesystem=xdg-videos",
+    "--filesystem=xdg-download",
+    "--talk-name=org.freedesktop.secrets"
+  ],
+  "modules": [
+    {
+      "name": "ffmpeg",
+      "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/man"
+      ],
+      "config-opts": [
+        "--enable-shared",
+        "--disable-static",
+        "--enable-gpl",
+        "--enable-libx264",
+        "--enable-libmp3lame"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ffmpeg.org/releases/ffmpeg-6.1.1.tar.xz",
+          "sha256": "8684f4b00f94b1633de08d4f40f09b5311f4350ea265697669d05e2634d2847a"
+        }
+      ]
+    },
+    {
+      "name": "ai-reel",
+      "buildsystem": "meson",
+      "sources": [
+        {
+          "type": "dir",
+          "path": "../../"
+        }
+      ]
+    }
+  ]
+}
+
