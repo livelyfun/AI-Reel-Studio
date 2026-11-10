@@ -75,7 +75,8 @@
         "--disable-static",
         "--enable-gpl",
         "--enable-libx264",
-        "--enable-libmp3lame"
+        "--enable-libmp3lame",
+        "--disable-vulkan"
       ],
       "sources": [
         {
