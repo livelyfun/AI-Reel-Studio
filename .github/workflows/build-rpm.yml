@@ -50,13 +50,15 @@ jobs:
 
       - name: Generate distribution source archive
         run: |
-          meson setup build_dist
-          meson dist -C build_dist --formats=gztar
+          # Use git archive (reliable in Actions containers) instead of meson dist
+          git archive --format=tar.gz --prefix=ai-reel-1.0.0/ \
+            -o ai-reel-1.0.0.tar.gz HEAD
+          ls -la ai-reel-1.0.0.tar.gz
 
       - name: Setup RPM build tree
         run: |
           mkdir -p ~/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
-          cp build_dist/meson-dist/ai-reel-1.0.0.tar.gz ~/rpmbuild/SOURCES/
+          cp ai-reel-1.0.0.tar.gz ~/rpmbuild/SOURCES/
           cp packaging/rpm/ai-reel-studio.spec ~/rpmbuild/SPECS/
 
       - name: Build binary and source RPMs
