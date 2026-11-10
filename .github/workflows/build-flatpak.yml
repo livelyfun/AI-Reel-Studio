@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Build Flatpak application bundle
-        uses: flatpak/flatpak-github-actions/flatpak-builder@487de5b3c3c2f168f18cfdb15d023b6b1ccf7f2b # v1.4
+        uses: flatpak/flatpak-github-actions/flatpak-builder@v6
         with:
           bundle: org.aireelstudio.AiReelStudio.flatpak
           manifest-path: packaging/flatpak/org.aireelstudio.AiReelStudio.json
@@ -32,9 +32,8 @@ jobs:
           cache: false
 
       - name: Upload Flatpak Artifact
-        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb99ba8edd # v4.6.1
+        uses: actions/upload-artifact@v4
         with:
           name: flatpak-bundle
           path: org.aireelstudio.AiReelStudio.flatpak
           if-no-files-found: error
-
