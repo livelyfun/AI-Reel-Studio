@@ -101,9 +101,18 @@ t_providers = executable('test_providers',
   dependencies: core_deps)
 test('providers_test', t_providers)
 
+t_generation = executable('test_generation',
+  ['tests/test_generation.c'] + core_src,
+  include_directories: inc,
+  dependencies: core_deps)
+test('generation_test', t_generation)
+
 # Desktop & Data Installation
 install_data('data/ai-reel.desktop',
   install_dir: get_option('datadir') / 'applications')
+
+install_data('data/org.aireelstudio.AiReelStudio.metainfo.xml',
+  install_dir: get_option('datadir') / 'metainfo')
 
 install_data('data/icons/ai-reel.svg',
   install_dir: get_option('datadir') / 'icons/hicolor/scalable/apps')

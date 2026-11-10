@@ -1,7 +1,7 @@
 {
   "app-id": "org.aireelstudio.AiReelStudio",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "46",
+  "runtime-version": "47",
   "sdk": "org.gnome.Sdk",
   "command": "ai-reel",
   "finish-args": [
@@ -15,7 +15,53 @@
     "--filesystem=xdg-download",
     "--talk-name=org.freedesktop.secrets"
   ],
+  "cleanup": [
+    "/include",
+    "/lib/pkgconfig",
+    "/share/man",
+    "/share/doc"
+  ],
   "modules": [
+    {
+      "name": "x264",
+      "cleanup": [
+        "/bin",
+        "/include",
+        "/lib/pkgconfig"
+      ],
+      "config-opts": [
+        "--enable-shared",
+        "--enable-pic",
+        "--disable-cli"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://code.videolan.org/videolan/x264.git",
+          "commit": "baee400fa9ced6f5481a728138fed6e8673e8f97"
+        }
+      ]
+    },
+    {
+      "name": "lame",
+      "cleanup": [
+        "/bin",
+        "/include",
+        "/lib/pkgconfig",
+        "/share"
+      ],
+      "config-opts": [
+        "--enable-shared",
+        "--disable-static"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://downloads.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz",
+          "sha256": "ddfe36cab87bd7beeb155a4261a2a4182d60747f35deafcb4249a60032ae2976"
+        }
+      ]
+    },
     {
       "name": "ffmpeg",
       "cleanup": [
@@ -50,4 +96,3 @@
     }
   ]
 }
-

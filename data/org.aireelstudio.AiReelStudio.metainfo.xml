@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.aireelstudio.AiReelStudio</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <name>AI Reel Studio</name>
+  <developer id="org.aireelstudio">
+    <name>AI Reel Studio Contributors</name>
+  </developer>
+  <summary>Professional Native AI-Powered Short-Form Video Production Studio</summary>
+  <description>
+    <p>
+      AI Reel Studio is a professional native Linux desktop application for creating,
+      editing, previewing, and exporting short-form social videos (Instagram Reels,
+      YouTube Shorts, TikTok) and standard video formats.
+    </p>
+    <p>Key features include:</p>
+    <ul>
+      <li>Multi-provider AI orchestration supporting Google Gemini, OpenRouter, and generic OpenAI-compatible endpoints.</li>
+      <li>Secure API credential management via the native Linux Secret Service API (GNOME Keyring / KWallet).</li>
+      <li>Procedural multi-track audio synthesis and background music generation.</li>
+      <li>Dynamic Ken Burns motion pan/zoom cinematography.</li>
+      <li>Automated word-level synchronized animated caption overlays.</li>
+      <li>Hardware-accelerated rendering and verified H.264 / AAC MP4 exports via FFmpeg.</li>
+      <li>Real-time preview and playback pipeline powered by GStreamer and GTK4.</li>
+      <li>Local SQLite project library and offline state persistence.</li>
+    </ul>
+  </description>
+  <launchable type="desktop-id">ai-reel.desktop</launchable>
+  <url type="homepage">https://github.com/livelyfun/AI-Reel-Studio</url>
+  <url type="bugtracker">https://github.com/livelyfun/AI-Reel-Studio/issues</url>
+  <provides>
+    <binary>ai-reel</binary>
+  </provides>
+  <screenshots>
+    <screenshot type="default">
+      <caption>AI Reel Studio main workspace and storyboard editor</caption>
+      <image>https://raw.githubusercontent.com/livelyfun/AI-Reel-Studio/main/docs/screenshot.png</image>
+    </screenshot>
+  </screenshots>
+  <releases>
+    <release version="1.0.0" date="2026-09-01">
+      <description>
+        <p>Initial production release of AI Reel Studio natively written in C17 and GTK4.</p>
+      </description>
+    </release>
+  </releases>
+  <content_rating type="oars-1.1" />
+</component>

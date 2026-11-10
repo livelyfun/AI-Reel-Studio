@@ -30,6 +30,47 @@ Designed for creators producing high-retention content for:
 
 ---
 
+## Installation & Packages
+
+Pre-built binaries are provided on the [Releases page](https://github.com/livelyfun/AI-Reel-Studio/releases) for Fedora RPM and standalone Flatpak bundles.
+
+### 1. Fedora Linux RPM (`.rpm`)
+
+Download the latest `.rpm` package and install it via DNF:
+
+```bash
+sudo dnf install ./ai-reel-studio-1.0.0-1.fc44.x86_64.rpm
+```
+
+Launch the application:
+```bash
+ai-reel
+# Or search for "AI Reel Studio" in your desktop application menu
+```
+
+### 2. Universal Flatpak Bundle (`.flatpak`)
+
+Download the `.flatpak` bundle and install it:
+
+```bash
+flatpak install --user ./org.aireelstudio.AiReelStudio.flatpak
+```
+
+Launch the Flatpak app:
+```bash
+flatpak run org.aireelstudio.AiReelStudio
+```
+
+### 3. Verify Download Integrity
+
+Verify the cryptographic SHA-256 hash of your downloaded packages:
+
+```bash
+sha256sum -c SHA256SUMS
+```
+
+---
+
 ## Building from Source
 
 ### Prerequisites (Fedora Linux)

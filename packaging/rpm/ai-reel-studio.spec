@@ -5,11 +5,13 @@ Summary:        Professional Native AI-Powered Short-Form Video Production Studi
 
 License:        MIT
 URL:            https://github.com/livelyfun/AI-Reel-Studio
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}/ai-reel-%{version}.tar.gz
 
 BuildRequires:  gcc
 BuildRequires:  meson
 BuildRequires:  ninja-build
+BuildRequires:  desktop-file-utils
+BuildRequires:  libappstream-glib
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -20,16 +22,10 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 
-Requires:       gtk4
-Requires:       glib2
-Requires:       json-glib
-Requires:       sqlite-libs
-Requires:       libsecret
-Requires:       libcurl
-Requires:       ffmpeg
-Requires:       gstreamer1
+Requires:       /usr/bin/ffmpeg
 Requires:       gstreamer1-plugins-good
 Requires:       gstreamer1-plugin-gtk4
+Requires:       hicolor-icon-theme
 
 %description
 AI Reel Studio is a native C17 Linux desktop studio for creating, editing,
@@ -39,7 +35,7 @@ procedural background music, Ken Burns cinematography and verified H.264/AAC
 MP4 exports.
 
 %prep
-%autosetup
+%autosetup -n ai-reel-%{version}
 
 %build
 %meson
@@ -50,10 +46,14 @@ MP4 exports.
 
 %check
 %meson_test
+desktop-file-validate %{buildroot}%{_datadir}/applications/ai-reel.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.aireelstudio.AiReelStudio.metainfo.xml
 
 %files
+%license LICENSE
 %{_bindir}/ai-reel
 %{_datadir}/applications/ai-reel.desktop
+%{_datadir}/metainfo/org.aireelstudio.AiReelStudio.metainfo.xml
 %{_datadir}/icons/hicolor/scalable/apps/ai-reel.svg
 %{_datadir}/ai-reel-studio/
 

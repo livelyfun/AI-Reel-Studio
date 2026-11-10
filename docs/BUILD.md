@@ -136,10 +136,90 @@ Meson build options:
 
 ---
 
-## 6. Packaging
+## 6. Packaging & Distribution
 
-- **RPM Package:** See `packaging/rpm/ai-reel-studio.spec`.
-- **Flatpak:** See `packaging/flatpak/org.aireelstudio.AiReelStudio.json`.
-- **Desktop Entry:** `data/ai-reel.desktop` installs to `/usr/share/applications/`.
-- **Application Icon:** `data/icons/ai-reel.svg` installs to `/usr/share/icons/hicolor/scalable/apps/`.
+### 6.1 Building the Fedora RPM Package
+
+To build the native `.rpm` package for Fedora Linux:
+
+1. **Install RPM build tools:**
+   ```bash
+   sudo dnf install -y rpm-build rpmlint desktop-file-utils libappstream-glib
+   ```
+
+2. **Generate distribution archive:**
+   ```bash
+   meson setup build_dist
+   meson dist -C build_dist --formats=gztar
+   ```
+
+3. **Stage archive and spec file:**
+   ```bash
+   mkdir -p ~/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
+   cp build_dist/meson-dist/ai-reel-1.0.0.tar.gz ~/rpmbuild/SOURCES/
+   cp packaging/rpm/ai-reel-studio.spec ~/rpmbuild/SPECS/
+   ```
+
+4. **Execute rpmbuild:**
+   ```bash
+   rpmbuild -ba ~/rpmbuild/SPECS/ai-reel-studio.spec
+   ```
+
+5. **Lint and verify the package:**
+   ```bash
+   rpmlint ~/rpmbuild/SPECS/ai-reel-studio.spec
+   rpmlint ~/rpmbuild/RPMS/x86_64/ai-reel-studio-1.0.0-*.rpm
+   ```
+
+6. **Install and test the generated RPM:**
+   ```bash
+   sudo dnf install ~/rpmbuild/RPMS/x86_64/ai-reel-studio-1.0.0-1.fc44.x86_64.rpm
+   ai-reel --help
+   ```
+
+---
+
+### 6.2 Building the Flatpak Application Bundle
+
+The Flatpak build uses GNOME Platform 47 runtime and SDK with sandboxed FFmpeg and codec support.
+
+1. **Install Flatpak and Flatpak Builder:**
+   ```bash
+   sudo dnf install -y flatpak flatpak-builder
+   ```
+
+2. **Add Flathub remote (if not already added):**
+   ```bash
+   flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+   ```
+
+3. **Install the GNOME 47 SDK and Platform:**
+   ```bash
+   flatpak install -y flathub org.gnome.Platform//47 org.gnome.Sdk//47
+   ```
+
+4. **Build and install locally:**
+   ```bash
+   flatpak-builder --user --install --force-clean build-flatpak packaging/flatpak/org.aireelstudio.AiReelStudio.json
+   ```
+
+5. **Create a standalone `.flatpak` single-file bundle:**
+   ```bash
+   flatpak-builder --repo=repo --force-clean build-flatpak packaging/flatpak/org.aireelstudio.AiReelStudio.json
+   flatpak build-bundle repo org.aireelstudio.AiReelStudio.flatpak org.aireelstudio.AiReelStudio
+   ```
+
+6. **Run the Flatpak application:**
+   ```bash
+   flatpak run org.aireelstudio.AiReelStudio
+   ```
+
+---
+
+### 6.3 Desktop and AppStream Metadata
+
+- **Desktop Entry:** `data/ai-reel.desktop` (validated via `desktop-file-validate`).
+- **AppStream Metainfo:** `data/org.aireelstudio.AiReelStudio.metainfo.xml` (validated via `appstream-util validate-relax --nonet` and `appstreamcli validate --no-net`).
+- **Application Icon:** `data/icons/ai-reel.svg` (installed to `hicolor` scalable theme).
+- **License File:** `LICENSE` (MIT license installed to `%license` directory).
 

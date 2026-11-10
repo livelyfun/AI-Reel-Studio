@@ -1,8 +1,11 @@
-#!/usr/bin/env xdg-open
 [Desktop Entry]
 Type=Application
 Name=AI Reel Studio
+GenericName=AI Video Studio
 Comment=Create AI-powered short-form videos
 Exec=ai-reel
 Icon=ai-reel
-Categories=AudioVideo;Photography;Application
+Terminal=false
+Categories=AudioVideo;Video;AudioVideoEditing;
+Keywords=AI;Video;Reels;Shorts;TikTok;Studio;Editor;
+StartupNotify=true
